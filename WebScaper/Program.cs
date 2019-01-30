@@ -21,7 +21,7 @@ namespace WebScaper
                 Scrape(web, ConfigurationManager.AppSettings["PL1"].ToString(), ConfigurationManager.AppSettings["PL2"].ToString(), ConfigurationManager.AppSettings["PL3"].ToString(), "PL", "Philadelphia Liberty");
                 Scrape(web, ConfigurationManager.AppSettings["YW1"].ToString(), ConfigurationManager.AppSettings["YW2"].ToString(), ConfigurationManager.AppSettings["YW3"].ToString(), "YW", "Yellowknife Wraiths");
                 Scrape(web, ConfigurationManager.AppSettings["AO1"].ToString(), ConfigurationManager.AppSettings["AO2"].ToString(), ConfigurationManager.AppSettings["AO3"].ToString(), "AO", "Arizona Outlaws");
-                Scrape(web, ConfigurationManager.AppSettings["LVL1"].ToString(), ConfigurationManager.AppSettings["LVL2"].ToString(), ConfigurationManager.AppSettings["LVL3"].ToString(), "LVL", "Las Vegas Legion");
+                Scrape(web, ConfigurationManager.AppSettings["NO1"].ToString(), ConfigurationManager.AppSettings["NO2"].ToString(), ConfigurationManager.AppSettings["NO3"].ToString(), "NO", "New Orleans Second Line");
                 Scrape(web, ConfigurationManager.AppSettings["OCO1"].ToString(), ConfigurationManager.AppSettings["OCO2"].ToString(), ConfigurationManager.AppSettings["OCO3"].ToString(), "OCO", "Orange County Otters");
         }
 
