@@ -23,6 +23,14 @@ namespace WebScaper
                 Scrape(web, ConfigurationManager.AppSettings["AO1"].ToString(), ConfigurationManager.AppSettings["AO2"].ToString(), ConfigurationManager.AppSettings["AO3"].ToString(), "AO", "Arizona Outlaws");
                 Scrape(web, ConfigurationManager.AppSettings["NO1"].ToString(), ConfigurationManager.AppSettings["NO2"].ToString(), ConfigurationManager.AppSettings["NO3"].ToString(), "NO", "New Orleans Second Line");
                 Scrape(web, ConfigurationManager.AppSettings["OCO1"].ToString(), ConfigurationManager.AppSettings["OCO2"].ToString(), ConfigurationManager.AppSettings["OCO3"].ToString(), "OCO", "Orange County Otters");
+
+                //Scrape(web, ConfigurationManager.AppSettings["KC1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "KC", "Kansas City Coyotes");
+                //Scrape(web, ConfigurationManager.AppSettings["PO1"].ToString(), ConfigurationManager.AppSettings["PO2"].ToString(), ConfigurationManager.AppSettings["PO3"].ToString(), "PO", "Portland Pythons");
+                //Scrape(web, ConfigurationManager.AppSettings["SA1"].ToString(), ConfigurationManager.AppSettings["SA2"].ToString(), ConfigurationManager.AppSettings["SA3"].ToString(), "SA", "San Antonio Marshals");
+                //Scrape(web, ConfigurationManager.AppSettings["TL1"].ToString(), ConfigurationManager.AppSettings["TL2"].ToString(), ConfigurationManager.AppSettings["TL3"].ToString(), "TL", "Tijuana Luchadores");
+
+                Scrape(web, ConfigurationManager.AppSettings["FA1"].ToString(), ConfigurationManager.AppSettings["FA2"].ToString(), ConfigurationManager.AppSettings["FA3"].ToString(), "FA", "Free Agents");
+
         }
 
         private static void Scrape(HtmlWeb web,string d1, string d2, string d3, string teamAbrv, string teamName)
