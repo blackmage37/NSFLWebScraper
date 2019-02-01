@@ -31,6 +31,14 @@ namespace WebScaper
 
                 Scrape(web, ConfigurationManager.AppSettings["FA1"].ToString(), ConfigurationManager.AppSettings["FA2"].ToString(), ConfigurationManager.AppSettings["FA3"].ToString(), "FA", "Free Agents");
 
+                // store a timestamp in record.json, then clean up
+                var dt = DateTime.UtcNow;
+                System.IO.StreamWriter dtFile = new System.IO.StreamWriter(ConfigurationManager.AppSettings["LocalPath"] + "record.json");
+                dtFile.WriteLine("{");
+                dtFile.WriteLine("'updated': " + Newtonsoft.Json.JsonConvert.SerializeObject(dt));
+                dtFile.WriteLine("}");
+                CloseAndDispose(dtFile);
+
         }
 
         private static void Scrape(HtmlWeb web,string d1, string d2, string d3, string teamAbrv, string teamName)
