@@ -99,7 +99,14 @@ namespace WebScaper
             System.IO.StreamWriter file1 = new System.IO.StreamWriter(ConfigurationManager.AppSettings["LocalPath"] + teamAbrv+"Players.txt");
             foreach (var nt in NameAndTPEAndURL)
             {
-                file1.WriteLine(nt.NameAndTPE.PlayerNames.InnerText + "," + nt.NameAndTPE.PlayerTPE.InnerText + ", " + nt.href1.ToString() + ",");
+
+                // convert other dash types as we go...
+                string sName = nt.NameAndTPE.PlayerNames.InnerText;
+                sName.Replace("–", "-");
+
+                // construct player line and output to text file
+                file1.WriteLine(sName + "," + nt.NameAndTPE.PlayerTPE.InnerText + ", " + nt.href1.ToString() + ",");
+
             }
 
             CloseAndDispose(file1);
