@@ -34,9 +34,7 @@ namespace WebScaper
                 // store a timestamp in record.json, then clean up
                 var dt = DateTime.UtcNow;
                 System.IO.StreamWriter dtFile = new System.IO.StreamWriter(ConfigurationManager.AppSettings["LocalPath"] + "record.json");
-                dtFile.WriteLine("{");
-                dtFile.WriteLine("'updated': " + Newtonsoft.Json.JsonConvert.SerializeObject(dt));
-                dtFile.WriteLine("}");
+                dtFile.WriteLine(dt.ToString("ddd, d MMMM yyyy HH:mm:ss zzz"));
                 CloseAndDispose(dtFile);
 
         }
