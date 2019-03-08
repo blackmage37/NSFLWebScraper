@@ -24,15 +24,29 @@ namespace WebScaper
                 Scrape(web, ConfigurationManager.AppSettings["NO1"].ToString(), ConfigurationManager.AppSettings["NO2"].ToString(), ConfigurationManager.AppSettings["NO3"].ToString(), "NO", "New Orleans Second Line");
                 Scrape(web, ConfigurationManager.AppSettings["OCO1"].ToString(), ConfigurationManager.AppSettings["OCO2"].ToString(), ConfigurationManager.AppSettings["OCO3"].ToString(), "OCO", "Orange County Otters");
 
-                //Scrape(web, ConfigurationManager.AppSettings["KC1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "KC", "Kansas City Coyotes");
-                //Scrape(web, ConfigurationManager.AppSettings["PO1"].ToString(), ConfigurationManager.AppSettings["PO2"].ToString(), ConfigurationManager.AppSettings["PO3"].ToString(), "PO", "Portland Pythons");
-                //Scrape(web, ConfigurationManager.AppSettings["SA1"].ToString(), ConfigurationManager.AppSettings["SA2"].ToString(), ConfigurationManager.AppSettings["SA3"].ToString(), "SA", "San Antonio Marshals");
-                //Scrape(web, ConfigurationManager.AppSettings["TL1"].ToString(), ConfigurationManager.AppSettings["TL2"].ToString(), ConfigurationManager.AppSettings["TL3"].ToString(), "TL", "Tijuana Luchadores");
-
                 Scrape(web, ConfigurationManager.AppSettings["FA1"].ToString(), ConfigurationManager.AppSettings["FA2"].ToString(), ConfigurationManager.AppSettings["FA3"].ToString(), "FA", "Free Agents");
 
-                // store a timestamp in record.json, then clean up
-                var dt = DateTime.UtcNow;
+            //Scrape(web, ConfigurationManager.AppSettings["KC1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "KC", "Kansas City Coyotes");
+            //Scrape(web, ConfigurationManager.AppSettings["PO1"].ToString(), ConfigurationManager.AppSettings["PO2"].ToString(), ConfigurationManager.AppSettings["PO3"].ToString(), "PO", "Portland Pythons");
+            //Scrape(web, ConfigurationManager.AppSettings["SA1"].ToString(), ConfigurationManager.AppSettings["SA2"].ToString(), ConfigurationManager.AppSettings["SA3"].ToString(), "SA", "San Antonio Marshals");
+            //Scrape(web, ConfigurationManager.AppSettings["TL1"].ToString(), ConfigurationManager.AppSettings["TL2"].ToString(), ConfigurationManager.AppSettings["TL3"].ToString(), "TL", "Tijuana Luchadores");
+            //Scrape(web, ConfigurationManager.AppSettings["PB1"].ToString(), ConfigurationManager.AppSettings["PB2"].ToString(), ConfigurationManager.AppSettings["PB3"].ToString(), "PB", "Palm Beach Solar Bears");
+            //Scrape(web, ConfigurationManager.AppSettings["NS1"].ToString(), ConfigurationManager.AppSettings["NS2"].ToString(), ConfigurationManager.AppSettings["NS3"].ToString(), "NS", "Norfolk Seawolves");
+
+            //Scrape(web, ConfigurationManager.AppSettings["QB1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "QB", "Quarterbacks");
+            //Scrape(web, ConfigurationManager.AppSettings["RB1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "RB", "Runningbacks");
+            //Scrape(web, ConfigurationManager.AppSettings["WR1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "WR", "Wide Receivers");
+            //Scrape(web, ConfigurationManager.AppSettings["TE1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "TE", "Tight Ends");
+            //Scrape(web, ConfigurationManager.AppSettings["OL1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "OL", "Offensive Line");
+            //Scrape(web, ConfigurationManager.AppSettings["DE1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "DE", "Defensive Ends");
+            //Scrape(web, ConfigurationManager.AppSettings["DT1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "DT", "Defensive Tackles");
+            //Scrape(web, ConfigurationManager.AppSettings["LB1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "LB", "Linebackers");
+            //Scrape(web, ConfigurationManager.AppSettings["CB1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "CB", "Cornerbacks");
+            //Scrape(web, ConfigurationManager.AppSettings["SF1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "SF", "Safeties");
+            //Scrape(web, ConfigurationManager.AppSettings["KP1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "KP", "Kickers and Punters");
+            
+            // store a timestamp in record.json, then clean up
+            var dt = DateTime.UtcNow;
                 System.IO.StreamWriter dtFile = new System.IO.StreamWriter(ConfigurationManager.AppSettings["LocalPath"] + "record.json");
                 dtFile.WriteLine(dt.ToString("ddd, d MMMM yyyy HH:mm:ss zzz"));
                 CloseAndDispose(dtFile);
