@@ -34,17 +34,17 @@ namespace WebScaper
                 Scrape(web, ConfigurationManager.AppSettings["PB1"].ToString(), ConfigurationManager.AppSettings["PB2"].ToString(), ConfigurationManager.AppSettings["PB3"].ToString(), "PB", "Palm Beach Solar Bears");
                 Scrape(web, ConfigurationManager.AppSettings["NS1"].ToString(), ConfigurationManager.AppSettings["NS2"].ToString(), ConfigurationManager.AppSettings["NS3"].ToString(), "NS", "Norfolk Seawolves");
 
-                Scrape(web, ConfigurationManager.AppSettings["QB1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "QB", "Quarterbacks");
-                Scrape(web, ConfigurationManager.AppSettings["RB1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "RB", "Runningbacks");
-                Scrape(web, ConfigurationManager.AppSettings["WR1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "WR", "Wide Receivers");
-                Scrape(web, ConfigurationManager.AppSettings["TE1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "TE", "Tight Ends");
-                Scrape(web, ConfigurationManager.AppSettings["OL1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "OL", "Offensive Line");
-                Scrape(web, ConfigurationManager.AppSettings["DE1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "DE", "Defensive Ends");
-                Scrape(web, ConfigurationManager.AppSettings["DT1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "DT", "Defensive Tackles");
-                Scrape(web, ConfigurationManager.AppSettings["LB1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "LB", "Linebackers");
-                Scrape(web, ConfigurationManager.AppSettings["CB1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "CB", "Cornerbacks");
-                Scrape(web, ConfigurationManager.AppSettings["SF1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "SF", "Safeties");
-                Scrape(web, ConfigurationManager.AppSettings["KP1"].ToString(), ConfigurationManager.AppSettings["KC2"].ToString(), ConfigurationManager.AppSettings["KC3"].ToString(), "KP", "Kickers and Punters");
+                Scrape(web, ConfigurationManager.AppSettings["QB1"].ToString(), ConfigurationManager.AppSettings["QB2"].ToString(), ConfigurationManager.AppSettings["QB3"].ToString(), "QB", "Quarterbacks");
+                Scrape(web, ConfigurationManager.AppSettings["RB1"].ToString(), ConfigurationManager.AppSettings["RB2"].ToString(), ConfigurationManager.AppSettings["RB3"].ToString(), "RB", "Runningbacks");
+                Scrape(web, ConfigurationManager.AppSettings["WR1"].ToString(), ConfigurationManager.AppSettings["WR2"].ToString(), ConfigurationManager.AppSettings["WR3"].ToString(), "WR", "Wide Receivers");
+                Scrape(web, ConfigurationManager.AppSettings["TE1"].ToString(), ConfigurationManager.AppSettings["TE2"].ToString(), ConfigurationManager.AppSettings["TE3"].ToString(), "TE", "Tight Ends");
+                Scrape(web, ConfigurationManager.AppSettings["OL1"].ToString(), ConfigurationManager.AppSettings["OL2"].ToString(), ConfigurationManager.AppSettings["OL3"].ToString(), "OL", "Offensive Line");
+                Scrape(web, ConfigurationManager.AppSettings["DE1"].ToString(), ConfigurationManager.AppSettings["DE2"].ToString(), ConfigurationManager.AppSettings["DE3"].ToString(), "DE", "Defensive Ends");
+                Scrape(web, ConfigurationManager.AppSettings["DT1"].ToString(), ConfigurationManager.AppSettings["DT2"].ToString(), ConfigurationManager.AppSettings["DT3"].ToString(), "DT", "Defensive Tackles");
+                Scrape(web, ConfigurationManager.AppSettings["LB1"].ToString(), ConfigurationManager.AppSettings["LB2"].ToString(), ConfigurationManager.AppSettings["LB3"].ToString(), "LB", "Linebackers");
+                Scrape(web, ConfigurationManager.AppSettings["CB1"].ToString(), ConfigurationManager.AppSettings["CB2"].ToString(), ConfigurationManager.AppSettings["CB3"].ToString(), "CB", "Cornerbacks");
+                Scrape(web, ConfigurationManager.AppSettings["SF1"].ToString(), ConfigurationManager.AppSettings["SF2"].ToString(), ConfigurationManager.AppSettings["SF3"].ToString(), "SF", "Safeties");
+                Scrape(web, ConfigurationManager.AppSettings["KP1"].ToString(), ConfigurationManager.AppSettings["KP2"].ToString(), ConfigurationManager.AppSettings["KP3"].ToString(), "KP", "Kickers and Punters");
 
             // store a timestamp in record.json, then clean up
             var dt = DateTime.UtcNow;
@@ -111,7 +111,9 @@ namespace WebScaper
             var NameAndTPE = PlayerNames.Zip(PlayerTPE, (n, t) => new { PlayerNames = n, PlayerTPE = t });
             var NameAndTPEAndURL = NameAndTPE.Zip(href1, (x, y) => new { NameAndTPE = x, href1 = y });
 
-            System.IO.StreamWriter file1 = new System.IO.StreamWriter(ConfigurationManager.AppSettings["LocalPath"] + teamAbrv+"Players.txt");
+            string subfolder = GetSubfolder(teamAbrv);
+
+            System.IO.StreamWriter file1 = new System.IO.StreamWriter(ConfigurationManager.AppSettings["LocalPath"] + subfolder + teamAbrv+"Players.txt");
             foreach (var nt in NameAndTPEAndURL)
             {
 
@@ -167,6 +169,48 @@ namespace WebScaper
 
  */
 
+        }
+
+        private static string GetSubfolder(string teamAbbreviation)
+        {
+            switch (teamAbbreviation)
+            {
+                case "AO":
+                case "BH":
+                case "CY":
+                case "NO":
+                case "OCO":
+                case "PL":
+                case "SJS":
+                case "YW":
+                    return "NSFL\\";
+
+                case "KC":
+                case "TL":
+                case "SA":
+                case "PO":
+                case "NS":
+                case "PB":
+                    return "DSFL\\";
+
+                case "QB":
+                case "RB":
+                case "WR":
+                case "TE":
+                case "OL":
+                case "DE":
+                case "DT":
+                case "LB":
+                case "CB":
+                case "SF":
+                case "KP":
+                    return "By Pos\\";
+
+
+                default:
+                    return "";
+
+            }
         }
 
         private static void CloseAndDispose(System.IO.StreamWriter file1)
