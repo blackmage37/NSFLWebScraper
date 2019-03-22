@@ -7,7 +7,7 @@ using System.Configuration;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 
-namespace WebScaper
+namespace WebScraper
 {
     class Program
     {
@@ -81,7 +81,13 @@ namespace WebScaper
                 PlayerNames.AddRange(GetNodes(doc3, ConfigurationManager.AppSettings["PlayerNodes"].ToString()).ToList());
             }
 
+            // replace apos
             PlayerNames.ForEach(x => x.InnerHtml = x.InnerHtml.Replace("&#39;", "'"));
+
+            // replace different dashes
+            PlayerNames.ForEach(x => x.InnerHtml = x.InnerHtml.Replace("–", "-"));
+            PlayerNames.ForEach(x => x.InnerHtml = x.InnerHtml.Replace("–", "-"));
+
             RemoveRepliesFromPlayerNames(PlayerNames);
 
             var PlayerTPE = GetNodes(doc, ConfigurationManager.AppSettings["TPENodes"].ToString());
@@ -183,6 +189,7 @@ namespace WebScaper
                 case "PL":
                 case "SJS":
                 case "YW":
+                case "FA":
                     return "NSFL\\";
 
                 case "KC":
@@ -230,19 +237,18 @@ namespace WebScaper
             int switcher = 1;
             foreach (HtmlNode node in document.DocumentNode.SelectNodes(ConfigurationManager.AppSettings["PlayerURL"]))
             {
-                if (switcher == 1)
-                {
-                    String[] x = node.OuterHtml.Split('"');
+                String[] x = node.OuterHtml.Split('"');
 
-                    var playerURL = x[1].Replace("&amp;", "&");
-                    playerURL = "http://nsfl.jcink.net/index.php?" + playerURL.Split('&').Last();
-                    href1.Add(playerURL.ToString());
+                    if (switcher == 1)
+                    {
+                        
+                        var playerURL = x[1].Replace("&amp;", "&");
+                        playerURL = "http://nsfl.jcink.net/index.php?" + playerURL.Split('&').Last();
+                        href1.Add(playerURL.ToString());
+                    }
+
                     switcher *= -1;
-                }
-                else
-                {
-                    switcher *= -1;
-                }
+
             }
         }
 
