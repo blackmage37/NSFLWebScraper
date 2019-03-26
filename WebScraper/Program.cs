@@ -57,7 +57,7 @@ namespace WebScraper
             // store a timestamp in record.json, then clean up
             var dt = DateTime.UtcNow;
                 StreamWriter dtFile = new StreamWriter(ConfigurationManager.AppSettings["LocalPath"] + "record.json");
-                dtFile.WriteLine(dt.ToString("ddd, d MMMM yyyy HH:mm:ss o"));
+                dtFile.WriteLine(dt.ToString("ddd, d MMMM yyyy HH:mm:ss"));
                 CloseAndDispose(dtFile);
 
         }
